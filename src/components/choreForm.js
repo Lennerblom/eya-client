@@ -49,8 +49,8 @@ export default class ChoreFprm extends Component {
             <label>Times Per Week
             <input name="frequency" type="number" value = {this.state.frequency}/>
             </label>
-            <label>Completed
-            <input name="choreValue" value = {this.state.choreValue}/>
+            <label>Status
+            <input name="status" value = {this.state.status}/>
             </label>
             </label>
             <button>submit</button>
