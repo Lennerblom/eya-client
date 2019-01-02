@@ -7,9 +7,9 @@ export default class ChoreFprm extends Component {
         this.defaultState = {
           choreName: '',
           assignedTo: '',
-          choreValue: false,
+          choreValue: Number,
           dueDateTime: Date.now(),
-          status: Number,
+          status: Boolean,
           frequency: 0,
           choreStartDate: Date,
           choreEndDate: Date,
@@ -41,17 +41,29 @@ export default class ChoreFprm extends Component {
         return (
             <fieldset>
         <form onSubmit={this.onSubmit} onChange={this.onChange}>
-            <label>Chore/Add Things
-            <input name="choreName" value = {this.state.choreName}/>
+            <label>Chore
+              <input name="choreName" value = {this.state.choreName}/>
             </label>
             <label>Assigned To
-            <input name="assignedTo" value = {this.state.assignedTo}/>
+              <input name="assignedTo" value = {this.state.assignedTo}/>
+            </label>
             <label>Times Per Week
-            <input name="frequency" type="number" value = {this.state.frequency}/>
+              <input name="frequency" type="number" value = {this.state.frequency}/>
             </label>
             <label>Status
-            <input name="status" value = {this.state.status}/>
+              <input name="status" value = {this.state.status}/>
             </label>
+            <label>Due Date/Time
+              <input name="dueDateTime" value = {this.state.dueDateTime}/>
+            </label>
+            <label>Chore Start Date
+              <input name="choreStartDate" value = {this.state.choreStartDate}/>
+            </label>
+            <label>Chore End Date
+              <input name="ChoreEndDate" value = {this.state.ChoreEndDate}/>
+            </label>
+            <label>Chore Value
+              <input name="choreValue" value = {this.state.choreValue}/>
             </label>
             <button>submit</button>
         </form>
