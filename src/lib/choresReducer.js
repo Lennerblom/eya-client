@@ -1,6 +1,6 @@
 import superagent from 'superagent';
 import uuid from 'uuid/v4';
-const url = 'http://localhost:3019/api/v1/user';
+const url = 'http://localhost:3019/api/v1/chores';
 // Actions
 export const CHORE_ADD = 'chore/ADD';
 
