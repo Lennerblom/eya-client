@@ -12,28 +12,14 @@ class Dashboard extends Component {
         this.state = {
             choreView: false,
             userView: false,
-
         }
       }
 
       componentDidMount() {
-        this.props.safetyFetch();
-        this.props.qualityFetch();
-        this.props.deliveryFetch();
-        this.props.costFetch();
-        this.props.moraleFetch();
-        this.props.rollupFetch();
+        this.props.choreFetch();
+        this.props.userFetch();
         }
-    
-        // componentDidUpdate() {
-        //   this.props.safetyFetch();
-        //   this.props.qualityFetch();
-        //   this.props.deliveryFetch();
-        //   this.props.costFetch();
-        //   this.props.moraleFetch();
-        //   this.props.rollupFetch(); 
-        // }
-    
+
         updateView = (e) => {
           if(e.target.name === "chore"){
           this.setState({safetyView: true});
@@ -44,7 +30,6 @@ class Dashboard extends Component {
       }
     
         returnView = () => {
-    
           this.setState({choreView: false});
           this.setState({userView: false});
           }
