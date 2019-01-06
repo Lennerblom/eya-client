@@ -5,6 +5,7 @@ import createStore from './lib/store.js';
 import Dashboard from './components/dashboard.js';
 import Landing from './components/landing.js';
 import './App.css';
+import '../src/styles/global.scss';
 
 const store = createStore();
 export default class App extends Component {

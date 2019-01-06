@@ -2,6 +2,9 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import ChoreForm from './choreForm';
 import ChoreItem from './choreItem';
+import UserForm from './userForm';
+import UserInst from './user';
+import Paper from '@material-ui/core/Paper';
 
 import {choreAdd, choreAsyncAdd, choreFetch, choreUpdate, choreDelete} from '../lib/choresReducer';
 import {userAdd, userAsyncAdd, userFetch, userUpdate, userDelete} from '../lib/userReducer';
@@ -22,10 +25,10 @@ class Dashboard extends Component {
 
         updateView = (e) => {
           if(e.target.name === "chore"){
-          this.setState({safetyView: true});
+          this.setState({choreView: true});
           } 
           else if(e.target.name === "user"){
-            this.setState({qualityView: true});
+            this.setState({userView: true});
           }
       }
     
@@ -36,18 +39,21 @@ class Dashboard extends Component {
     render() {
         return (
             <Fragment>
+              <Paper>
               <h1>add dashboard page</h1>
+              <button onClick={this.updateView} name="chore">Add Chore</button>
               {this.state.choreView && <ChoreForm onComplete={this.props.choreAdd}/>}
               <ul>
               {this.props.chore.map((chore)=> <li key={chore.id}>
               <ChoreItem chore={chore} onComplete={this.props.choreUpdate} onRemove={this.props.choreDelete} /></li>)}
             </ul>
-
-              {this.state.userView && <userForm onComplete={this.props.userAdd}/>}
+            <button onClick={this.updateView} name="user">Add User</button>
+              {this.state.userView && <UserForm onComplete={this.props.userAdd}/>}
               <ul>
               {this.props.user.map((user)=> <li key={user.id}>
-              <userItem user={user} onComplete={this.props.userUpdate} onRemove={this.props.userDelete} /></li>)}
+              <UserInst user={user} onComplete={this.props.userUpdate} onRemove={this.props.userDelete} /></li>)}
             </ul>
+            </Paper>
             </Fragment>
         );
     }
