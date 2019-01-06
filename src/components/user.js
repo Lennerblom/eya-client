@@ -1,5 +1,13 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import UserForm from './userForm';
+//import Paper from '@material-ui/core/Paper';
+//import PropTypes from 'prop-types';
+//import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+//import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+//import Button from '@material-ui/core/Button';
+//import Typography from '@material-ui/core/Typography';
 
 export default class UserInst extends Component {
 
@@ -26,7 +34,8 @@ export default class UserInst extends Component {
     
       render() {
           return(
-            <Fragment>
+            <Card>
+                <CardContent>
              <div onDoubleClick={this.updateView}>
                 <li>
                     <h3>User</h3>
@@ -39,7 +48,8 @@ export default class UserInst extends Component {
                 {this.state.view && <button onClick={this.onRemove}>Delete</button>}
              </div> 
              {this.state.view && <div><UserForm onComplete={this.userUpdate} user={this.props.user} viewChange={this.returnView} onClick={this.props.returnView} buttonText = 'save update'/><button onClick={this.returnView}>cancel update</button></div>}
-            </Fragment>
+             </CardContent>
+            </Card>
           );
       }
     }

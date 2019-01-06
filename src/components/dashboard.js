@@ -5,6 +5,13 @@ import ChoreItem from './choreItem';
 import UserForm from './userForm';
 import UserInst from './user';
 import Paper from '@material-ui/core/Paper';
+//import PropTypes from 'prop-types';
+//import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+//import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+//import Typography from '@material-ui/core/Typography';
 
 import {choreAdd, choreAsyncAdd, choreFetch, choreUpdate, choreDelete} from '../lib/choresReducer';
 import {userAdd, userAsyncAdd, userFetch, userUpdate, userDelete} from '../lib/userReducer';
@@ -29,6 +36,7 @@ class Dashboard extends Component {
           } 
           else if(e.target.name === "user"){
             this.setState({userView: true});
+            console.log(this.state.userView);
           }
       }
     
@@ -36,23 +44,32 @@ class Dashboard extends Component {
           this.setState({choreView: false});
           this.setState({userView: false});
           }
+          
     render() {
         return (
             <Fragment>
               <Paper>
+                <Card>
+                    <CardContent>
               <h1>add dashboard page</h1>
-              <button onClick={this.updateView} name="chore">Add Chore</button>
+              <Button onClick={this.updateView} name="chore">Add Chore</Button>
               {this.state.choreView && <ChoreForm onComplete={this.props.choreAdd}/>}
               <ul>
               {this.props.chore.map((chore)=> <li key={chore.id}>
               <ChoreItem chore={chore} onComplete={this.props.choreUpdate} onRemove={this.props.choreDelete} /></li>)}
             </ul>
-            <button onClick={this.updateView} name="user">Add User</button>
+            </CardContent>
+            </Card>
+            <Card>
+            <CardContent>
+            <Button onClick={this.updateView} name="user">Add User</Button>
               {this.state.userView && <UserForm onComplete={this.props.userAdd}/>}
               <ul>
               {this.props.user.map((user)=> <li key={user.id}>
               <UserInst user={user} onComplete={this.props.userUpdate} onRemove={this.props.userDelete} /></li>)}
             </ul>
+            </CardContent>
+            </Card>
             </Paper>
             </Fragment>
         );

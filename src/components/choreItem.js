@@ -54,7 +54,7 @@ class ChoreItem extends Component {
             <CardContent>
              <div onDoubleClick={this.updateView}>
              <Typography className="title" color="textPrimary" gutterBottom>
-               Chore: {this.props.chore.choreName}
+               Chore: {this.props.chore.choreName.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ')}
              </Typography>
              <Typography className={this.classes.title} color="textPrimary" gutterBottom>
                Assigned To: {this.props.chore.assignedTo}
