@@ -29,7 +29,6 @@ class ChoreItem extends Component {
         this.state = {
           view: false,
         }
-        this.classes = props;
       }
     
       updateView = () => {
@@ -49,14 +48,15 @@ class ChoreItem extends Component {
       }
     
       render() {
+        const { classes } = this.props;
           return(
-            <Card className={this.classes.card}>
+            <Card className={classes.card}>
             <CardContent>
              <div onDoubleClick={this.updateView}>
              <Typography className="title" color="textPrimary" gutterBottom>
-               Chore: {this.props.chore.choreName}
+               Chore: {this.props.chore.choreName.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ')}
              </Typography>
-             <Typography className={this.classes.title} color="textPrimary" gutterBottom>
+             <Typography className={classes.title} color="textPrimary" gutterBottom>
                Assigned To: {this.props.chore.assignedTo}
              </Typography>
                 {/* <li>
