@@ -12,8 +12,9 @@ import '../styles/global.scss';
 
 const styles = {
   card: {
-    width: 400,
+    width: 300,
     minWidth: 275,
+    height: 300,
   },
   title: {
     fontSize: 24,
@@ -53,7 +54,7 @@ class ChoreItem extends Component {
             <Card className={classes.card}>
             <CardContent>
              <div onDoubleClick={this.updateView}>
-             <Typography className="title" color="textPrimary" gutterBottom>
+             <Typography className={classes.title} color="textPrimary" gutterBottom>
                Chore: {this.props.chore.choreName.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ')}
              </Typography>
              <Typography className={classes.title} color="textPrimary" gutterBottom>
