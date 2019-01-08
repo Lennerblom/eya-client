@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import uuid from 'uuid/v4';
 
-export default class UserFprm extends Component {
+export default class UserForm extends Component {
     constructor(props) {
         super(props);
         this.defaultState = {
@@ -20,6 +20,7 @@ export default class UserFprm extends Component {
       onSubmit = (e) => {
           e.preventDefault();
           this.props.onComplete(this.state);
+          this.props.viewChange();
           this.setState({...this.defaultState, id: uuid()});
           console.log(this.state);
       };

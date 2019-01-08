@@ -1,6 +1,6 @@
 import uuid from 'uuid/v4';
 import superagent from 'superagent';
-const url =  'http://localhost:3019/api/v1/user';
+const url =  'http://localhost:3019/api/v1/users';
 // Actions
 export const USER_ADD = 'user/ADD';
 export const USER_ASYNC_ADD = 'user/ASYNC_ADD';

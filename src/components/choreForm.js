@@ -23,6 +23,7 @@ export default class ChoreFprm extends Component {
       onSubmit = (e) => {
           e.preventDefault();
           this.props.onComplete(this.state);
+          this.props.viewChange();
           this.setState({...this.defaultState, id: uuid()});
           console.log(this.state);
       };
