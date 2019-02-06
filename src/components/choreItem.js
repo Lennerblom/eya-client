@@ -15,6 +15,7 @@ const styles = {
     width: 300,
     minWidth: 275,
     height: 300,
+
   },
   title: {
     fontSize: 24,

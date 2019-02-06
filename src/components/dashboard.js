@@ -49,19 +49,19 @@ class Dashboard extends Component {
         return (
             <Fragment>
               <Paper>
-                <Card>
-                    <CardContent>
               <h1>add dashboard page</h1>
               <Button onClick={this.updateView} name="chore">Add Chore</Button>
+                <Card>
+                <a href="/"><CardContent>
               {this.state.choreView && <ChoreForm onComplete={this.props.choreAdd} viewChange={this.returnView}/>}
               <ul>
               {this.props.chore.map((chore)=> <li key={chore.id}>
               <ChoreItem chore={chore} onComplete={this.props.choreUpdate} onRemove={this.props.choreDelete} /></li>)}
             </ul>
-            {/* </CardContent>
+            </CardContent></a>
             </Card>
             <Card>
-            <CardContent> */}
+            <CardContent>
             <Button onClick={this.updateView} name="user">Add User</Button>
               {this.state.userView && <UserForm onComplete={this.props.userAdd} viewChange={this.returnView}/>}
               <ul>
