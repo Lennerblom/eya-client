@@ -10,6 +10,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import '../styles/global.scss';
 
+
 const styles = {
   card: {
     width: 300,
@@ -52,14 +53,15 @@ class ChoreItem extends Component {
       render() {
         const { classes } = this.props;
           return(
+            <a href="/#/details">
             <Card className={classes.card}>
             <CardContent>
-             <div onDoubleClick={this.updateView}>
+             <div onDoubleClick={this.updateView}>{//TODO:/*remove double click and make an admin view that has a update button*/}
              <Typography className={classes.title} color="textPrimary" gutterBottom>
                Chore: {this.props.chore.choreName.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ')}
              </Typography>
              <Typography className={classes.title} color="textPrimary" gutterBottom>
-               Assigned To: {this.props.chore.assignedTo}
+               Assigned To: {this.props.chore.assignedTo.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ')}
              </Typography>
                 {/* <li>
                     <h3>Chore</h3>
@@ -74,6 +76,8 @@ class ChoreItem extends Component {
              {this.state.view && <div><ChoreForm onComplete={this.choreUpdate} chore={this.props.chore} viewChange={this.returnView} onClick={this.props.returnView} buttonText = 'save update'/><button onClick={this.returnView}>cancel update</button></div>}
              </CardContent>
             </Card>
+            </a>
+            
           );
       }
     }

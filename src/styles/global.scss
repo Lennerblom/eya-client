@@ -1,3 +1,15 @@
 ul {
     list-style: none;
+    display: inline;
+}
+.card {
+    display: inline-block;
+    color: red;
+    width: 305px;
+}
+li {
+    display: inline;
+}
+div {
+    display: inline-block;
 }

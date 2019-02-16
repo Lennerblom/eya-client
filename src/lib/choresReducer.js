@@ -60,6 +60,19 @@ export const choreFetch = () => {
   };
 };
 
+export const choreFetchOne = (chore) => {
+  return dispatch => {
+    fetch(`${url}/${chore._id}`)
+      .then(function(res) { 
+        return res.json();
+      })
+      .then((chore) => {
+        console.log('fetch data: ', chore);
+        dispatch(choreAdd(chore));
+      });
+  };
+};
+
 export const choreUpdate = (chore) => {
   return dispatch => {
     superagent.put(`${url}/${chore._id}`)

@@ -37,10 +37,9 @@ export default class UserInst extends Component {
             // <Card>
             //     <CardContent>
             <Fragment>
-                <p>hello</p>
              <div onDoubleClick={this.updateView}>
                 <li>
-                    <h3>User</h3>
+                    <h3>User:</h3>
                     <p>{this.props.user.name}</p>
                 </li>
                 <li>
