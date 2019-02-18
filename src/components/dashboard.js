@@ -35,6 +35,8 @@ class Dashboard extends Component {
         this.state = {
             choreView: false,
             userView: false,
+            detailsView: false,
+            cardsView: true,
         }
       }
 
@@ -52,6 +54,10 @@ class Dashboard extends Component {
           else if(e.target.name === "user"){
             this.setState({userView: true});
             console.log(this.state.userView);
+          }
+          else if(e.target.name === "details"){
+              this.setState({cardsView: false});
+              this.setState({detailsView: true});
           }
       }
     
@@ -73,10 +79,10 @@ class Dashboard extends Component {
               <Card>
                 {/* <a href="/"> */}
                 {/* <CardContent> */}
-                <Card item xs={3}>
+                {this.state.cardsView && <Card item xs={3}>
               {this.props.chore.map((chore)=> <CardContent key={chore.id}>
               <ChoreItem chore={chore} onComplete={this.props.choreUpdate} onRemove={this.props.choreDelete} /></CardContent>)}
-              </Card>
+              </Card>}
             {/* </CardContent>
             {/* </a> */}
             {/* </Card> */}
@@ -91,7 +97,8 @@ class Dashboard extends Component {
             </ul>
             </CardContent>
             </Card>
-            <ChoreDetails loadOneChore={this.props.choreFetchOne}/>
+            <button name="details" onClick={this.updateView}>details</button>
+            {this.state.detailsView && <ChoreDetails name="details"  className="details" loadOneChore={this.props.choreFetchOne}/>}
             </Paper>
             </Fragment>
         );
