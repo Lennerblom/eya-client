@@ -12,9 +12,22 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 //import Typography from '@material-ui/core/Typography';
-
-import {choreAdd, choreAsyncAdd, choreFetch, choreUpdate, choreDelete} from '../lib/choresReducer';
+import '../styles/global.scss';
+import {choreAdd, choreAsyncAdd, choreFetch, choreFetchOne, choreUpdate, choreDelete} from '../lib/choresReducer';
 import {userAdd, userAsyncAdd, userFetch, userUpdate, userDelete} from '../lib/userReducer';
+//import Grid from '@material-ui/core/Grid';
+import ChoreDetails from './choreDetails';
+
+// const styles = theme => ({
+//     root: {
+//       flexGrow: 1,
+//     },
+//     paper: {
+//       padding: theme.spacing.unit,
+//       textAlign: 'center',
+//       color: theme.palette.text.secondary,
+//     },
+//   });
 class Dashboard extends Component {
 
     constructor(props) {
@@ -22,6 +35,8 @@ class Dashboard extends Component {
         this.state = {
             choreView: false,
             userView: false,
+            detailsView: false,
+            cardsView: true,
         }
       }
 
@@ -31,12 +46,18 @@ class Dashboard extends Component {
         }
 
         updateView = (e) => {
+            console.log('Why', e.target.name);
           if(e.target.name === "chore"){
           this.setState({choreView: true});
+          console.log('view:',this.state.choreView);
           } 
           else if(e.target.name === "user"){
             this.setState({userView: true});
             console.log(this.state.userView);
+          }
+          else if(e.target.name === "details"){
+              this.setState({cardsView: false});
+              this.setState({detailsView: true});
           }
       }
     
@@ -49,19 +70,25 @@ class Dashboard extends Component {
         return (
             <Fragment>
               <Paper>
-                <Card>
-                    <CardContent>
               <h1>add dashboard page</h1>
-              <Button onClick={this.updateView} name="chore">Add Chore</Button>
+              <button onClick={this.updateView} name="chore">Add Chore</button>
+            <div>
               {this.state.choreView && <ChoreForm onComplete={this.props.choreAdd} viewChange={this.returnView}/>}
-              <ul>
-              {this.props.chore.map((chore)=> <li key={chore.id}>
-              <ChoreItem chore={chore} onComplete={this.props.choreUpdate} onRemove={this.props.choreDelete} /></li>)}
-            </ul>
+            </div>
+              {/* <div className="cardDiv">
+              <Card>
+                {/* <a href="/"> */}
+                {/* <CardContent> */}
+                {this.state.cardsView && <Card item xs={3}>
+              {this.props.chore.map((chore)=> <CardContent key={chore.id}>
+              <ChoreItem chore={chore} onComplete={this.props.choreUpdate} onRemove={this.props.choreDelete} /></CardContent>)}
+              </Card>}
             {/* </CardContent>
-            </Card>
+            {/* </a> */}
+            {/* </Card> */}
+            {/* </div> */}
             <Card>
-            <CardContent> */}
+            <CardContent>
             <Button onClick={this.updateView} name="user">Add User</Button>
               {this.state.userView && <UserForm onComplete={this.props.userAdd} viewChange={this.returnView}/>}
               <ul>
@@ -70,11 +97,16 @@ class Dashboard extends Component {
             </ul>
             </CardContent>
             </Card>
+            <button name="details" onClick={this.updateView}>details</button>
+            {this.state.detailsView && <ChoreDetails name="details"  className="details" loadOneChore={this.props.choreFetchOne}/>}
             </Paper>
             </Fragment>
         );
     }
 }
+// Dashboard.propTypes = {
+//     classes: PropTypes.object.isRequired,
+//   };
 
 const mapStateToProps = (state) => ({ 
     chore: state.chore,
@@ -85,6 +117,7 @@ const mapDispatchToProps = (dispatch) => ({
     choreAdd: chore => dispatch(choreAdd(chore)),
     choreAsyncAdd: chore => dispatch(choreAsyncAdd(chore)),
     choreFetch: chore => dispatch(choreFetch(chore)),
+    choreFetchOne: chore => dispatch(choreFetchOne(chore)),
     choreUpdate: chore => dispatch(choreUpdate(chore)),
     choreDelete: chore => dispatch(choreDelete(chore)),
 

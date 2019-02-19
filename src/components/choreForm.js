@@ -41,7 +41,7 @@ export default class ChoreFprm extends Component {
     render() {
         return (
             <fieldset>
-        <form onSubmit={this.onSubmit} onChange={this.onChange}>
+        <form onSubmit={this.onSubmit} onChange={this.onChange} onScroll="true">
             <label>Chore
               <input name="choreName" value = {this.state.choreName}/>
             </label>

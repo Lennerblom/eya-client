@@ -4,6 +4,7 @@ import {HashRouter, Route, Switch} from 'react-router-dom';
 import createStore from './lib/store.js';
 import Dashboard from './components/dashboard.js';
 import Landing from './components/landing.js';
+import ChoreDetails from './components/choreDetails';
 import './App.css';
 import '../src/styles/global.scss';
 
@@ -18,6 +19,7 @@ export default class App extends Component {
                 <Switch>
                   <Route exact path="/home" component={Dashboard}/>
                   <Route exact path="/" component={Landing}/>
+                  <Route exact path="/details" component={ChoreDetails}/>
                 </Switch>
             </HashRouter>
           </Provider>
