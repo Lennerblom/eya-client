@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import uuid from 'uuid/v4';
 
-export default class ChoreFprm extends Component {
+export default class ChoreForm extends Component {
     constructor(props) {
         super(props);
         this.defaultState = {

@@ -1,0 +1,30 @@
+.card-container {
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+  }
+
+    .card-content {
+      height: 90px;
+      padding: 0 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid black;
+      background-color: rgb(233, 230, 230);
+      // position: absolute;
+  
+      .card-title {
+        font-weight: bold;
+        font-size: 22px;
+        color: #4a4a4a;
+      }
+
+    }
+  // }
+  
