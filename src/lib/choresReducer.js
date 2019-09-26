@@ -1,16 +1,17 @@
 import superagent from 'superagent';
 import uuid from 'uuid/v4';
-const url = 'http://localhost:3019/api/v1/chores';
+const url = 'https://localhost:3019/api/v1/chores';
 // Actions
 export const CHORE_ADD = 'chore/ADD';
 export const CHORE_ASYNC_ADD = 'chore/ASYNC_ADD';
 export const CHORE_FETCH = 'chore/FETCH';
+export const CHORE_FETCH_ONE = 'chore/FETCH_ONE';
 export const CHORE_UPDATE = 'chore/UPDATE';
 export const CHORE_DELETE = 'chore/DELETE';
 
 // Reducer
 let initialState = [];
-export default (state = initialState, action) => {
+const choresReducer = (state = initialState, action) => {
   let {type, payload} = action;
   switch (type) {
   case CHORE_ADD:
@@ -55,7 +56,10 @@ export const choreFetch = () => {
       })
       .then((chore) => {
         console.log('fetch data: ', chore);
-        dispatch(choreAsyncAdd(chore));
+        dispatch({
+          type: CHORE_FETCH,
+          payload: chore,
+        });
       });
   };
 };
@@ -68,7 +72,10 @@ export const choreFetchOne = (chore) => {
       })
       .then((chore) => {
         console.log('fetch data: ', chore);
-        dispatch(choreAdd(chore));
+        dispatch({
+          type: CHORE_FETCH_ONE,
+          payload: chore,
+        });
       });
   };
 };
@@ -86,17 +93,19 @@ export const choreUpdate = (chore) => {
   };
    
 };
-export const choreDelete = (user) => {
+export const choreDelete = (chore) => {
   return dispatch => {
-    superagent.delete(`${url}/${user._id}`)
+    superagent.delete(`${url}/${chore._id}`)
       .then(res => {
         return res.text;
       })
       .then(() => {
         dispatch(
           {type: CHORE_DELETE,
-            payload: user,
+            payload: chore,
           });
       });
   };
 };
+
+export default choresReducer;
